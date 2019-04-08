@@ -13,12 +13,13 @@ namespace Gestion_Biblio
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
         public void Ajouter(string nom, string prenom)
         {
+            Auteur a = new Auteur(0, nom, prenom);
             int t = 0;
             cnx.Open();
             string requete = "SELECT COUNT(*) FROM [AUTEUR] WHERE [NOMA] =@Nom AND [PRENOMA] =@Prenom";
             SqlCommand cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Nom", nom);
-            cmd.Parameters.AddWithValue("@Prenom", prenom);
+            cmd.Parameters.AddWithValue("@Nom", a.Nom);
+            cmd.Parameters.AddWithValue("@Prenom", a.Prenom);
             SqlDataReader Dr = cmd.ExecuteReader();
             while (Dr.Read())
             {
@@ -35,8 +36,8 @@ namespace Gestion_Biblio
                 cnx.Open();
                 requete = "INSERT INTO AUTEUR (NOMA,PRENOMA) VALUES(@Nom,@Prenom)";
                 cmd = new SqlCommand(requete, cnx);
-                cmd.Parameters.AddWithValue("@Nom", nom);
-                cmd.Parameters.AddWithValue("@Prenom", prenom);
+                cmd.Parameters.AddWithValue("@Nom", a.Nom);
+                cmd.Parameters.AddWithValue("@Prenom", a.Prenom);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("L'Auteur a été ajouter avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 cnx.Close();

@@ -34,7 +34,7 @@ namespace Gestion_Biblio
             Auteur a = new Auteur();
             a.Id = id;
             cnx.Open();
-            string requete = "SELECT * FROM [AUTEUR] where IDA = @Id";
+            string requete = "SELECT * FROM [AUTEUR] where [IDA] = @Id";
             SqlCommand cmd = new SqlCommand(requete, cnx);
             cmd.Parameters.AddWithValue("@Id", id);
             SqlDataReader Dr = cmd.ExecuteReader();

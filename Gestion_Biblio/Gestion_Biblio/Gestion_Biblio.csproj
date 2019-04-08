@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auteur.cs" />
+    <Compile Include="Gestion_usager.cs" />
     <Compile Include="Ihm_auteur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,10 +54,20 @@
       <DependentUpon>Ihm_auteur.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestion_auteur.cs" />
+    <Compile Include="Ihm_usager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ihm_usager.Designer.cs">
+      <DependentUpon>Ihm_usager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usager.cs" />
     <EmbeddedResource Include="Ihm_auteur.resx">
       <DependentUpon>Ihm_auteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ihm_usager.resx">
+      <DependentUpon>Ihm_usager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
