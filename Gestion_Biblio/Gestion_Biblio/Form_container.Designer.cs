@@ -31,6 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionAuteurToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionOeuvreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -38,7 +40,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionToolStripMenuItem,
-            this.gestionAuteurToolStripMenuItem1});
+            this.gestionAuteurToolStripMenuItem1,
+            this.gestionOeuvreToolStripMenuItem,
+            this.gestionToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -58,6 +62,20 @@
             this.gestionAuteurToolStripMenuItem1.Size = new System.Drawing.Size(98, 20);
             this.gestionAuteurToolStripMenuItem1.Text = "Gestion Auteur";
             this.gestionAuteurToolStripMenuItem1.Click += new System.EventHandler(this.gestionAuteurToolStripMenuItem1_Click);
+            // 
+            // gestionOeuvreToolStripMenuItem
+            // 
+            this.gestionOeuvreToolStripMenuItem.Name = "gestionOeuvreToolStripMenuItem";
+            this.gestionOeuvreToolStripMenuItem.Size = new System.Drawing.Size(162, 20);
+            this.gestionOeuvreToolStripMenuItem.Text = "Gestion Oeuvre/Exemplaire";
+            this.gestionOeuvreToolStripMenuItem.Click += new System.EventHandler(this.gestionOeuvreToolStripMenuItem_Click);
+            // 
+            // gestionToolStripMenuItem1
+            // 
+            this.gestionToolStripMenuItem1.Name = "gestionToolStripMenuItem1";
+            this.gestionToolStripMenuItem1.Size = new System.Drawing.Size(174, 20);
+            this.gestionToolStripMenuItem1.Text = "Gestion Réservation/Emprunt";
+            this.gestionToolStripMenuItem1.Click += new System.EventHandler(this.gestionToolStripMenuItem1_Click);
             // 
             // Form_container
             // 
@@ -81,5 +99,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionAuteurToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem gestionOeuvreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem1;
     }
 }

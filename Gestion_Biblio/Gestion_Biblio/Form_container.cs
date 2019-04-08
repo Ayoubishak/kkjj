@@ -45,5 +45,15 @@ namespace Gestion_Biblio
             ia.Dock = DockStyle.Fill;
             ia.Show();
         }
+
+        private void gestionOeuvreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gestionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
