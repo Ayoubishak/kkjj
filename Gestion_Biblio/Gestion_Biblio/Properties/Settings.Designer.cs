@@ -27,9 +27,9 @@ namespace Gestion_Biblio.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=Gestion_Biblio;Integrated Security=True")]
-        public string cnx {
+        public string Biblio {
             get {
-                return ((string)(this["cnx"]));
+                return ((string)(this["Biblio"]));
             }
         }
     }
