@@ -14,6 +14,7 @@ namespace Gestion_Biblio
     public partial class Ihm_auteur : Form
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
+        int g = 1;
         public Ihm_auteur()
         {
             InitializeComponent();
@@ -57,6 +58,7 @@ namespace Gestion_Biblio
         
         private void button2_Click(object sender, EventArgs e)
         {
+            comboBox1.SelectedIndex = -1;
             label4.Text = "";
             textBox1.Clear();
             textBox2.Clear();
@@ -128,18 +130,22 @@ namespace Gestion_Biblio
         }
         private void Load_All_Auteur()
         {
-            comboBox1.Items.Clear();
-            label4.Text = "";
-            cnx.Open();
-            string requete = "SELECT DISTINCT([NOMA]+' '+[PRENOMA]) FROM [AUTEUR]";
-            SqlCommand cmd = new SqlCommand(requete, cnx);
-            SqlDataReader Dr = cmd.ExecuteReader();
-            while (Dr.Read())
+            if (comboBox1.Text != "" || g == 1)
             {
-                comboBox1.Items.Add(Dr[0].ToString());
+                g--;
+                comboBox1.Items.Clear();
+                label4.Text = "";
+                cnx.Open();
+                string requete = "SELECT DISTINCT([NOMA]+' '+[PRENOMA]) FROM [AUTEUR]";
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                SqlDataReader Dr = cmd.ExecuteReader();
+                while (Dr.Read())
+                {
+                    comboBox1.Items.Add(Dr[0].ToString());
+                }
+                Dr.Close();
+                cnx.Close();
             }
-            Dr.Close();
-            cnx.Close();
         }
     }
 }

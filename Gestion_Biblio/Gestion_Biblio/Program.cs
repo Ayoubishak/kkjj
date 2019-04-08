@@ -16,7 +16,7 @@ namespace Gestion_Biblio
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ihm_auteur());
+            Application.Run(new Form_container());
         }
     }
 }

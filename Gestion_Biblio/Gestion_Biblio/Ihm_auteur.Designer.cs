@@ -182,6 +182,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Ihm_auteur";
             this.Text = "Gestion Auteur";
             this.Load += new System.EventHandler(this.Ihm_auteur_Load);
