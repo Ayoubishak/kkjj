@@ -14,7 +14,7 @@ namespace Gestion_Biblio
     public partial class Ihm_usager : Form
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
-        static int g = 1;
+        int g = 1;
         public Ihm_usager()
         {
             InitializeComponent();
@@ -86,17 +86,17 @@ namespace Gestion_Biblio
             button2_Click(null, null);
             this.Load_All_Usager();
         }
-        private void Maj(int id, string nom, string prenom, string address, string tel, string email,int retard)
+        private void Maj(int idu, string nom, string prenom, string address, string tel, string email,int retard)
         {
             Gestion_usager gu = new Gestion_usager();
-            gu.Maj(id, nom, prenom, address, tel, email, retard);
+            gu.Maj(idu, nom, prenom, address, tel, email, retard);
             button2_Click(null, null);
             this.Load_All_Usager();
         }
-        private void Retirer(int id)
+        private void Retirer(int idu)
         {
             Gestion_usager gu = new Gestion_usager();
-            gu.Retirer(id);
+            gu.Retirer(idu);
             button2_Click(null, null);
             this.Load_All_Usager();
         }

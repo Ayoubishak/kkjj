@@ -43,12 +43,12 @@ namespace Gestion_Biblio
                 cnx.Close();
             }
         }
-        public void Maj(int id, string nom, string prenom)
+        public void Maj(int ida, string nom, string prenom)
         {
             cnx.Open();
             string requete = "UPDATE [AUTEUR] SET [NOMA]=@Nom ,[PRENOMA]=@Prenom WHERE [IDA]=@Id";
             SqlCommand cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Id", ida);
             cmd.Parameters.AddWithValue("@Nom", nom);
             cmd.Parameters.AddWithValue("@Prenom", prenom);
             cmd.ExecuteNonQuery();

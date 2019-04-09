@@ -27,12 +27,12 @@ namespace Gestion_Biblio
             cnx.Close();
         }
 
-        public void Maj(int id, string nom, string prenom, string address, string tel, string email, int retard)
+        public void Maj(int idu, string nom, string prenom, string address, string tel, string email, int retard)
         {
             cnx.Open();
             string requete = "UPDATE [USAGER] SET [NOM] =@Nom ,[PRENOM] =@Prenom ,[ADDRESS] =@Address ,[TEL] =@Tel ,[EMAIL] =@Email ,[RETARD] =@Retard WHERE [IDU] = @Id";
             SqlCommand cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Id", idu);
             cmd.Parameters.AddWithValue("@Nom", nom);
             cmd.Parameters.AddWithValue("@Prenom", prenom);
             cmd.Parameters.AddWithValue("@Address", address);
@@ -44,12 +44,12 @@ namespace Gestion_Biblio
             cnx.Close();
         }
 
-        public void Retirer(int id)
+        public void Retirer(int idu)
         {
             cnx.Open();
             string requete = "UPDATE [USAGER] SET [USAGERSUP] = 1 WHERE [IDU] = @Id";
             SqlCommand cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Id", idu);
             cmd.ExecuteNonQuery();
             MessageBox.Show("L'Usager a été retirer avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();

@@ -47,7 +47,6 @@ namespace Gestion_Biblio
             Dr.Close();
             cnx.Close();
             return a;
-            
         }
         
     }

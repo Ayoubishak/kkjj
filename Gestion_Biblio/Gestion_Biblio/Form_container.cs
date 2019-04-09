@@ -48,7 +48,12 @@ namespace Gestion_Biblio
 
         private void gestionOeuvreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            fermer();
+            this.Text = "Gestion Auteur";
+            Ihm_oeuvre_et_exemplaire ioe = new Ihm_oeuvre_et_exemplaire();
+            ioe.MdiParent = this;
+            ioe.Dock = DockStyle.Fill;
+            ioe.Show();
         }
 
         private void gestionToolStripMenuItem1_Click(object sender, EventArgs e)

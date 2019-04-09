@@ -52,6 +52,7 @@
     <Compile Include="Form_container.Designer.cs">
       <DependentUpon>Form_container.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gestion_oeuvre_et_exemplaire.cs" />
     <Compile Include="Gestion_usager.cs" />
     <Compile Include="Ihm_auteur.cs">
       <SubType>Form</SubType>
@@ -60,12 +61,21 @@
       <DependentUpon>Ihm_auteur.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestion_auteur.cs" />
+    <Compile Include="Ihm_oeuvre_et_exemplaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ihm_oeuvre_et_exemplaire.Designer.cs">
+      <DependentUpon>Ihm_oeuvre_et_exemplaire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ihm_usager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ihm_usager.Designer.cs">
       <DependentUpon>Ihm_usager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Livre.cs" />
+    <Compile Include="Magazine.cs" />
+    <Compile Include="Oeuvre.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usager.cs" />
@@ -74,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ihm_auteur.resx">
       <DependentUpon>Ihm_auteur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ihm_oeuvre_et_exemplaire.resx">
+      <DependentUpon>Ihm_oeuvre_et_exemplaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ihm_usager.resx">
       <DependentUpon>Ihm_usager.cs</DependentUpon>

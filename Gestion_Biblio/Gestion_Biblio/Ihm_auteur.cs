@@ -76,18 +76,11 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        private void Majauteur(int id,string nom, string prenom)
+        private void Majauteur(int ida,string nom, string prenom)
         {
             Gestion_auteur ga = new Gestion_auteur();
-            ga.Maj(id, nom, prenom);
+            ga.Maj(ida, nom, prenom);
             this.Load_All_Auteur();
-            button2_Click(null, null);
-        }
-
-        private void Modifier(int id,string nom, string prenom)
-        {
-            Gestion_auteur ga = new Gestion_auteur();
-            ga.Maj(id,nom, prenom);
             button2_Click(null, null);
         }
 
