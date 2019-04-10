@@ -73,7 +73,10 @@ namespace Gestion_Biblio
             {
                 comboBox2.Items.Clear();
                 cnx.Open();
-                requete = "SELECT o.[TITRE] FROM [EMPRUNT] e, [EXEMPLAIRE] ex, [OEUVRE] o WHERE e.[IDE] = ex.[IDE] AND ex.[IDO] = o.[IDO] AND e.[IDU]=@Idu AND e.[DATERETOUR] IS NULL";
+                if (button6.Enabled == false)
+                    requete = "SELECT o.[TITRE] FROM [OEUVRE] o, [RESERVATION] r WHERE  r.IDO = o.IDO AND r.IDU =@Idu AND r.[DATEANNULATION] IS NULL";
+                else
+                    requete = "SELECT o.[TITRE] FROM [EMPRUNT] e, [EXEMPLAIRE] ex, [OEUVRE] o WHERE e.[IDE] = ex.[IDE] AND ex.[IDO] = o.[IDO] AND e.[IDU]=@Idu AND e.[DATERETOUR] IS NULL";
                 cmd = new SqlCommand(requete, cnx);
                 cmd.Parameters.AddWithValue("@Idu", int.Parse(label4.Text));
                 Dr = cmd.ExecuteReader();

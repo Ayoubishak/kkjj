@@ -135,7 +135,7 @@
             this.comboBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(230, 198);
+            this.comboBox2.Location = new System.Drawing.Point(50, 13);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 7;
@@ -221,10 +221,11 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(322, 206);
+            this.label5.Location = new System.Drawing.Point(177, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 15;
+            this.label5.Visible = false;
             // 
             // label7
             // 
@@ -241,8 +242,10 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Location = new System.Drawing.Point(224, 133);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(490, 59);
@@ -254,9 +257,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(908, 497);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);

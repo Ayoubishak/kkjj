@@ -33,7 +33,7 @@ namespace Gestion_Biblio
             requete = "SELECT COUNT(*) from RESERVATION WHERE [IDU]=@Idu AND [IDO]=@Ido AND [DATEANNULATION] IS NULL";
             cmd = new SqlCommand(requete, cnx);
             cmd.Parameters.AddWithValue("@Idu", e.Usager.Id);
-            cmd.Parameters.AddWithValue("@Ido", e.Exemplaire.Id);
+            cmd.Parameters.AddWithValue("@Ido", e.Exemplaire.Oeuvre.Id);
             SqlDataReader Dr = cmd.ExecuteReader();
             while (Dr.Read())
             {
