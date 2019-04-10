@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auteur.cs" />
+    <Compile Include="Exemplaire.cs" />
     <Compile Include="Form_container.cs">
       <SubType>Form</SubType>
     </Compile>

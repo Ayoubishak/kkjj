@@ -60,17 +60,40 @@ namespace Gestion_Biblio
             MessageBox.Show("Le Livre a été modifier avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();
         }
-        public void Ajouterexemplaire()
+        public void Ajouterexemplaire(int ido, string etat)
         {
-
+            Oeuvre o = new Oeuvre();
+            o = o.Identifier(ido);
+            Exemplaire e = new Exemplaire(0, etat,o);
+            cnx.Open();
+            string requete = "INSERT INTO [EXEMPLAIRE] ([IDO],[ETAT]) VALUES (@Ido, @Etat)";
+            SqlCommand cmd = new SqlCommand(requete, cnx);
+            cmd.Parameters.AddWithValue("@Ido", e.Oeuvre.Id);
+            cmd.Parameters.AddWithValue("@Etat", e.Etat);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("L'Exemplaire a été ajouter avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            cnx.Close();
         }
-        public void Majexemplaire()
+        public void Majexemplaire(int ide, string etat)
         {
-
+            cnx.Open();
+            string requete = "UPDATE [EXEMPLAIRE] SET [ETAT] = @Etat WHERE [IDE] = @Ide";
+            SqlCommand cmd = new SqlCommand(requete, cnx);
+            cmd.Parameters.AddWithValue("@Etat", etat);
+            cmd.Parameters.AddWithValue("@Ide", ide);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("L'Exemplaire a été modifier avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            cnx.Close();
         }
-        public void Retirerexemplaire()
+        public void Retirerexemplaire(int ide)
         {
-
+            cnx.Open();
+            string requete = "UPDATE [EXEMPLAIRE] SET [DISPONIBLE] = 0 WHERE [IDE] = @Ide";
+            SqlCommand cmd = new SqlCommand(requete, cnx);
+            cmd.Parameters.AddWithValue("@Ide", ide);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("L'Exemplaire a été retirer avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            cnx.Close();
         }
     }
 }
