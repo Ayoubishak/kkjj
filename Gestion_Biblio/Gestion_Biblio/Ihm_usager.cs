@@ -14,7 +14,6 @@ namespace Gestion_Biblio
     public partial class Ihm_usager : Form
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
-        int g = 1;
         public Ihm_usager()
         {
             InitializeComponent();
@@ -177,22 +176,19 @@ namespace Gestion_Biblio
         }
         private void Load_All_Usager()
         {
-            if (comboBox1.Text != "" || g==1)
+            label8.Visible = false;
+            comboBox1.Items.Clear();
+            cnx.Open();
+            string requete = "SELECT [IDU] FROM [USAGER]";
+            SqlCommand cmd = new SqlCommand(requete, cnx);
+            SqlDataReader Dr = cmd.ExecuteReader();
+            while (Dr.Read())
             {
-                g--;
-                label8.Visible = false;
-                comboBox1.Items.Clear();
-                cnx.Open();
-                string requete = "SELECT [IDU] FROM [USAGER]";
-                SqlCommand cmd = new SqlCommand(requete, cnx);
-                SqlDataReader Dr = cmd.ExecuteReader();
-                while (Dr.Read())
-                {
-                    comboBox1.Items.Add(Dr[0].ToString());
-                }
-                Dr.Close();
-                cnx.Close();
+                comboBox1.Items.Add(Dr[0].ToString());
             }
+            Dr.Close();
+            cnx.Close();
+
         }
 
         private void Ihm_usager_Load(object sender, EventArgs e)

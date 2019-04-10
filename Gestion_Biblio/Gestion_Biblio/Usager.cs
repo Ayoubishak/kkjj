@@ -49,6 +49,7 @@ namespace Gestion_Biblio
         public Usager Identifier(int id)
         {
             Usager u = new Usager();
+            u.Id = id;
             cnx.Open();
             string requete = "SELECT * FROM [USAGER] WHERE [IDU]= @Id";
             SqlCommand cmd = new SqlCommand(requete, cnx);

@@ -14,7 +14,6 @@ namespace Gestion_Biblio
     public partial class Ihm_auteur : Form
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
-        int g = 1;
         public Ihm_auteur()
         {
             InitializeComponent();
@@ -123,9 +122,6 @@ namespace Gestion_Biblio
         }
         private void Load_All_Auteur()
         {
-            if (comboBox1.Text != "" || g == 1)
-            {
-                g--;
                 comboBox1.Items.Clear();
                 label4.Text = "";
                 cnx.Open();
@@ -138,7 +134,6 @@ namespace Gestion_Biblio
                 }
                 Dr.Close();
                 cnx.Close();
-            }
         }
     }
 }

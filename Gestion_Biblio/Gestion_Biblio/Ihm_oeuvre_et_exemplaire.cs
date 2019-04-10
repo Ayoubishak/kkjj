@@ -14,7 +14,6 @@ namespace Gestion_Biblio
     public partial class Ihm_oeuvre_et_exemplaire : Form
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
-        int g = 1;
         public Ihm_oeuvre_et_exemplaire()
         {
             InitializeComponent();
@@ -332,54 +331,47 @@ namespace Gestion_Biblio
 
         private void Load_All_Auteur()
         {
-            if (comboBox2.Text != "" || g == 1)
+            comboBox2.Items.Clear();
+            label7.Text = "";
+            cnx.Open();
+            string requete = "SELECT DISTINCT([NOMA]+' '+[PRENOMA]) FROM [AUTEUR]";
+            SqlCommand cmd = new SqlCommand(requete, cnx);
+            SqlDataReader Dr = cmd.ExecuteReader();
+            while (Dr.Read())
             {
-                g--;
-                comboBox2.Items.Clear();
-                label7.Text = "";
-                cnx.Open();
-                string requete = "SELECT DISTINCT([NOMA]+' '+[PRENOMA]) FROM [AUTEUR]";
-                SqlCommand cmd = new SqlCommand(requete, cnx);
-                SqlDataReader Dr = cmd.ExecuteReader();
-                while (Dr.Read())
-                {
-                    comboBox2.Items.Add(Dr[0].ToString());
-                }
-                Dr.Close();
-                cnx.Close();
+                comboBox2.Items.Add(Dr[0].ToString());
             }
+            Dr.Close();
+            cnx.Close();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             label6.Text = "";
-            if (comboBox1.Text != "" || g == 1)
+            Auteur a = new Auteur();
+            string requete = "";
+            if (button3.Enabled == false)
+                requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Livre'";
+            else
+                requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Magazine'";
+            cnx.Open();
+            SqlCommand cmd = new SqlCommand(requete, cnx);
+            cmd.Parameters.AddWithValue("@Titre", comboBox1.Text);
+            SqlDataReader Dr = cmd.ExecuteReader();
+            while (Dr.Read())
             {
-                Auteur a = new Auteur();
-                g--;
-                string requete = "";
+                label6.Text = Dr[0].ToString();
+                textBox1.Text = Dr[2].ToString();
                 if (button3.Enabled == false)
-                    requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Livre'";
-                else
-                    requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Magazine'";
-                cnx.Open();
-                SqlCommand cmd = new SqlCommand(requete, cnx);
-                cmd.Parameters.AddWithValue("@Titre", comboBox1.Text);
-                SqlDataReader Dr = cmd.ExecuteReader();
-                while (Dr.Read())
-                {
-                    label6.Text = Dr[0].ToString();
-                    textBox1.Text = Dr[2].ToString();
-                    if (button3.Enabled == false)
-                        a.Id = int.Parse(Dr[1].ToString());
-                }
-                Dr.Close();
-                cnx.Close();
-                a = a.Identifier(a.Id);
-                comboBox2.Text = a.Nom + " " + a.Prenom;
-                if (button9.Enabled == false)
-                    this.Load_All_Exemplaire();
+                    a.Id = int.Parse(Dr[1].ToString());
             }
+            Dr.Close();
+            cnx.Close();
+            a = a.Identifier(a.Id);
+            comboBox2.Text = a.Nom + " " + a.Prenom;
+            if (button9.Enabled == false)
+                this.Load_All_Exemplaire();
+
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -416,25 +408,22 @@ namespace Gestion_Biblio
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             label8.Text = "";
-            if (comboBox4.Text != "" || g == 1)
+            string requete = "";
+            if (button3.Enabled == false)
+                requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Livre'";
+            else
+                requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Magazine'";
+            cnx.Open();
+            SqlCommand cmd = new SqlCommand(requete, cnx);
+            cmd.Parameters.AddWithValue("@Titre", comboBox4.Text);
+            SqlDataReader Dr = cmd.ExecuteReader();
+            while (Dr.Read())
             {
-                g--;
-                string requete = "";
-                if (button3.Enabled == false)
-                    requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Livre'";
-                else
-                    requete = "SELECT * FROM [OEUVRE] WHERE [TITRE]=@Titre AND [TYPE]='Magazine'";
-                cnx.Open();
-                SqlCommand cmd = new SqlCommand(requete, cnx);
-                cmd.Parameters.AddWithValue("@Titre", comboBox4.Text);
-                SqlDataReader Dr = cmd.ExecuteReader();
-                while (Dr.Read())
-                {
-                    label8.Text = Dr[0].ToString();
-                }
-                Dr.Close();
-                cnx.Close();
+                label8.Text = Dr[0].ToString();
             }
+            Dr.Close();
+            cnx.Close();
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

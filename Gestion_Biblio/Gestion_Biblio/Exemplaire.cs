@@ -43,9 +43,9 @@ namespace Gestion_Biblio
             SqlDataReader Dr = cmd.ExecuteReader();
             while (Dr.Read())
             {
+                o.Id = int.Parse(Dr[0].ToString());
                 e.Etat = Dr[1].ToString();
                 e.Disponible = Boolean.Parse(Dr[2].ToString());
-                o.Id = int.Parse(Dr[0].ToString());
             }
             Dr.Close();
             cnx.Close();

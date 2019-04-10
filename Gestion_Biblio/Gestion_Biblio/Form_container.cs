@@ -49,7 +49,7 @@ namespace Gestion_Biblio
         private void gestionOeuvreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fermer();
-            this.Text = "Gestion Auteur";
+            this.Text = "Gestion Oeuvre et Exemplaire";
             Ihm_oeuvre_et_exemplaire ioe = new Ihm_oeuvre_et_exemplaire();
             ioe.MdiParent = this;
             ioe.Dock = DockStyle.Fill;
@@ -58,7 +58,12 @@ namespace Gestion_Biblio
 
         private void gestionToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            fermer();
+            this.Text = "Gestion Reservation et Emprunt";
+            Ihm_reservation_et_emprunt ire = new Ihm_reservation_et_emprunt();
+            ire.MdiParent = this;
+            ire.Dock = DockStyle.Fill;
+            ire.Show();
         }
     }
 }

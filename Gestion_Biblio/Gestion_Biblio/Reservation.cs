@@ -7,29 +7,29 @@ using System.Threading.Tasks;
 
 namespace Gestion_Biblio
 {
-    class Emprunt
+    class Reservation
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
         private DateTime datejour;
         private DateTime? dateretour; //variable de type date qui accepte une valeur NULL 
         private Usager usager;
-        private Exemplaire exemplaire;
+        private Oeuvre oeuvre;
 
         public DateTime Datejour { get => datejour; set => datejour = value; }
         public DateTime? Dateretour { get => dateretour; set => dateretour = value; }
         internal Usager Usager { get => usager; set => usager = value; }
-        internal Exemplaire Exemplaire { get => exemplaire; set => exemplaire = value; }
+        internal Oeuvre Oeuvre { get => oeuvre; set => oeuvre = value; }
 
-        public Emprunt()
+        public Reservation()
         {
         }
 
-        public Emprunt(DateTime datejour, DateTime dateretour, Usager usager, Exemplaire exemplaire)
+        public Reservation(DateTime datejour, DateTime? dateretour, Usager usager, Oeuvre oeuvre)
         {
-            this.Datejour = datejour;
-            this.Dateretour = dateretour;
-            this.Usager = usager;
-            this.Exemplaire = exemplaire;
+            this.datejour = datejour;
+            this.dateretour = dateretour;
+            this.usager = usager;
+            this.oeuvre = oeuvre;
         }
     }
 }
