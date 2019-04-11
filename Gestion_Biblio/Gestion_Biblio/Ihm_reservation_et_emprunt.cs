@@ -211,7 +211,7 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        private void button6_Click(object sender, EventArgs e //Modifier formulaire pour la gestion des reservations
+        private void button6_Click(object sender, EventArgs e) //Modifier formulaire pour la gestion des reservations
         {
             button1.Text = "Réserver";
             button3.Text = "Réserver Oeuvre";
