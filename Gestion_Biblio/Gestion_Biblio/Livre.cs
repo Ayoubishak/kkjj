@@ -25,7 +25,7 @@ namespace Gestion_Biblio
             this.auteur = auteur;
         }
   
-        public new Livre Identifier(int id)
+        public new Livre Identifier(int id) //Identifier livre
         {
             Auteur a = new Auteur();
             Livre l = new Livre();

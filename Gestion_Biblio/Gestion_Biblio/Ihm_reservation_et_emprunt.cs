@@ -24,7 +24,7 @@ namespace Gestion_Biblio
             this.Load_All_Oeuvre();
             this.Load_All_Usager();
         }
-        private void Load_All_Oeuvre()
+        private void Load_All_Oeuvre() //Charger toute les oeuvres
         {
             comboBox2.Items.Clear();
             cnx.Open();
@@ -37,7 +37,7 @@ namespace Gestion_Biblio
             cnx.Close();
         }
 
-        private void Load_All_Usager()
+        private void Load_All_Usager() //Charger tous les usagers non retirer
         {
                 comboBox1.Items.Clear();
                 cnx.Open();
@@ -52,7 +52,7 @@ namespace Gestion_Biblio
                 cnx.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //Identifier usager
         {
             comboBox3.Items.Clear();
             dataGridView1.DataSource = null;
@@ -91,7 +91,7 @@ namespace Gestion_Biblio
             }
         }
 
-        public void Load_Datagridview()
+        public void Load_Datagridview() //Remplir le datagridview
         {
             cnx.Open();
             string requete = "";
@@ -110,7 +110,7 @@ namespace Gestion_Biblio
             dataGridView1.Refresh();
             cnx.Close();
         }
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //Identifier oeuvre
         {
             comboBox3.Items.Clear();
 
@@ -137,7 +137,7 @@ namespace Gestion_Biblio
             cnx.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Modifier formulaire l'emprunt ou la reservation
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -160,7 +160,7 @@ namespace Gestion_Biblio
             this.Load_All_Oeuvre();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //Modifier formulaire pour retourner des exemplaire ou annuler des reservation
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -198,7 +198,7 @@ namespace Gestion_Biblio
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //Modifier formulaire pour la gestion des emprunts
         {
             button1.Text = "Emprunter";
             button3.Text = "Emprunter Oeuvre";
@@ -211,7 +211,7 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e //Modifier formulaire pour la gestion des reservations
         {
             button1.Text = "Réserver";
             button3.Text = "Réserver Oeuvre";
@@ -224,7 +224,7 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Réinitialiser le formulaire
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -243,34 +243,34 @@ namespace Gestion_Biblio
             
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) //Remplir les champs oeuvre et exemplaire
         {
             comboBox2.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             if(button5.Enabled==false)
                 comboBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
         }
-        public void Emprunter(int idu, int ide)
+        public void Emprunter(int idu, int ide) //Emprunter un exemplaire
         {
             Gestion_reservation_et_emprunt gre = new Gestion_reservation_et_emprunt();
             gre.Emprunter(idu,ide);
             this.Load_Datagridview();
             button2_Click(null, null);
         }
-        public void Rendre(int idu, int ide)
+        public void Rendre(int idu, int ide) //Retour de l'exemplaire
         {
             Gestion_reservation_et_emprunt gre = new Gestion_reservation_et_emprunt();
             gre.Rendre(idu, ide);
             this.Load_Datagridview();
             button2_Click(null, null);
         }
-        public void Reserver(int idu, int ido)
+        public void Reserver(int idu, int ido) //Faire réservation
         {
             Gestion_reservation_et_emprunt gre = new Gestion_reservation_et_emprunt();
             gre.Reserver(idu, ido);
             this.Load_Datagridview();
             button2_Click(null, null);
         }
-        public void Annuler(int idu, int ido)
+        public void Annuler(int idu, int ido) //Annuler réservation
         {
             Gestion_reservation_et_emprunt gre = new Gestion_reservation_et_emprunt();
             gre.Annuler(idu, ido);
@@ -278,7 +278,7 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Executer (Emprunt, Retour, Réservation, Annulation)
         {
             Boolean b = false;
             errorProvider1.Clear();
@@ -337,6 +337,11 @@ namespace Gestion_Biblio
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

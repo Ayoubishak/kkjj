@@ -24,7 +24,7 @@ namespace Gestion_Biblio
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Executer (Ajout, Modification, Retrait) d'un usager
         {
             Boolean b = false;
             errorProvider1.Clear();
@@ -71,28 +71,28 @@ namespace Gestion_Biblio
                 else
                 {
                     if (button1.Text == "Modifier")
-                        this.Maj(int.Parse(comboBox1.SelectedText), textBox1.Text, textBox2.Text, richTextBox1.Text, textBox3.Text, textBox4.Text, int.Parse(numericUpDown1.Value.ToString()));
+                        this.Maj(int.Parse(comboBox1.Text), textBox1.Text, textBox2.Text, richTextBox1.Text, textBox3.Text, textBox4.Text, int.Parse(numericUpDown1.Value.ToString()));
                     else
                         this.Retirer(int.Parse(comboBox1.Text.ToString()));
                 }
             }
         }
 
-        private void Ajouter(string nom, string prenom, string address, string tel, string email)
+        private void Ajouter(string nom, string prenom, string address, string tel, string email) //Ajouter Usager
         {
             Gestion_usager gu = new Gestion_usager();
             gu.Ajouter(nom, prenom, address, tel, email);
             button2_Click(null, null);
             this.Load_All_Usager();
         }
-        private void Maj(int idu, string nom, string prenom, string address, string tel, string email,int retard)
+        private void Maj(int idu, string nom, string prenom, string address, string tel, string email,int retard) //Modifier Usager
         {
             Gestion_usager gu = new Gestion_usager();
             gu.Maj(idu, nom, prenom, address, tel, email, retard);
             button2_Click(null, null);
             this.Load_All_Usager();
         }
-        private void Retirer(int idu)
+        private void Retirer(int idu) //Retirer Usager
         {
             Gestion_usager gu = new Gestion_usager();
             gu.Retirer(idu);
@@ -100,7 +100,7 @@ namespace Gestion_Biblio
             this.Load_All_Usager();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Réinitialiser le formulaire
         {
             comboBox1.SelectedIndex = -1;
             errorProvider1.Clear();
@@ -115,10 +115,9 @@ namespace Gestion_Biblio
             textBox4.Text = "";
             richTextBox1.Text = "";
             numericUpDown1.Value = 0;
-            label8.Visible = false;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Modifier le formulaire pour ajouter un usager
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -130,14 +129,13 @@ namespace Gestion_Biblio
             button4.Enabled = true;
             button5.Enabled = true;
             label6.Visible = false;
-            label7.Visible =false;
-            label8.Visible = false;
+            label7.Visible = false;
             numericUpDown1.Visible = false;
             comboBox1.Visible = false;
             button1.Text = "Ajouter";
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //Modifier le formulaire pour modifier un usager
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -150,13 +148,12 @@ namespace Gestion_Biblio
             button5.Enabled = true;
             label6.Visible = true;
             label7.Visible = true;
-            label8.Visible = false;
             numericUpDown1.Visible = true;
             comboBox1.Visible = true;
             button1.Text = "Modifier";
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //Modifier le formulaire pour retirer un usager
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -169,17 +166,15 @@ namespace Gestion_Biblio
             button5.Enabled = false;
             label6.Visible = true;
             label7.Visible = true;
-            label8.Visible = false;
             numericUpDown1.Visible = true;
             comboBox1.Visible = true;
             button1.Text = "Retirer";
         }
-        private void Load_All_Usager()
+        private void Load_All_Usager() //Charger les identifiants tous les utilisateur non retirer
         {
-            label8.Visible = false;
             comboBox1.Items.Clear();
             cnx.Open();
-            string requete = "SELECT [IDU] FROM [USAGER]";
+            string requete = "SELECT [IDU] FROM [USAGER] WHERE USAGERSUP = 0";
             SqlCommand cmd = new SqlCommand(requete, cnx);
             SqlDataReader Dr = cmd.ExecuteReader();
             while (Dr.Read())
@@ -196,9 +191,8 @@ namespace Gestion_Biblio
             this.Load_All_Usager();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //Remplir les champs avec l'id
         {
-            label8.Visible = false;
             cnx.Open();
             string requete = "SELECT * FROM [USAGER] WHERE [IDU] = @Id";
             SqlCommand cmd = new SqlCommand(requete, cnx);
@@ -212,11 +206,19 @@ namespace Gestion_Biblio
                 textBox3.Text = Dr[4].ToString();
                 textBox4.Text = Dr[5].ToString();
                 numericUpDown1.Value = decimal.Parse(Dr[6].ToString());
-                if(Dr[7].ToString()=="True")
-                    label8.Visible = true;
             }
             Dr.Close();
             cnx.Close();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

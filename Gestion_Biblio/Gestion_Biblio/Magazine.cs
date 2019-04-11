@@ -22,7 +22,7 @@ namespace Gestion_Biblio
         {
         }
 
-        public new Magazine Identifier(int id)
+        public new Magazine Identifier(int id) //Identifier magazine
         {
             Magazine m = new Magazine();
             m.Id = id;

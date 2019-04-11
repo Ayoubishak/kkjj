@@ -26,7 +26,7 @@ namespace Gestion_Biblio
             this.titre = titre;
         }
 
-        public Oeuvre Identifier(int id)
+        public Oeuvre Identifier(int id) //Identifier oeuvre
         {
             Oeuvre o = new Oeuvre();
             o.Id = id;

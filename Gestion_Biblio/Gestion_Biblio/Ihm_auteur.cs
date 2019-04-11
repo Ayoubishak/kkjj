@@ -24,7 +24,7 @@ namespace Gestion_Biblio
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //(Ajouter, Modifier) Auteur
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -55,7 +55,7 @@ namespace Gestion_Biblio
             }
         }
         
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Réinitialiser le formulaire
         {
             comboBox1.SelectedIndex = -1;
             label4.Text = "";
@@ -67,7 +67,7 @@ namespace Gestion_Biblio
             errorProvider3.Clear();
         }
 
-        private void Ajouter(string nom,string prenom)
+        private void Ajouter(string nom,string prenom) //Ajouter auteur
         {
             Gestion_auteur ga = new Gestion_auteur();
             ga.Ajouter(nom, prenom);
@@ -75,7 +75,7 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        private void Majauteur(int ida,string nom, string prenom)
+        private void Majauteur(int ida,string nom, string prenom) //Modifier auteur
         {
             Gestion_auteur ga = new Gestion_auteur();
             ga.Maj(ida, nom, prenom);
@@ -83,7 +83,7 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Modifier formulaire pour l'ajout de l'auteur
         {
             button3.Enabled = false;
             button4.Enabled = true;
@@ -92,7 +92,7 @@ namespace Gestion_Biblio
             button1.Text = "Ajouter";
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //Modifier formulaire pour la modification de l'auteur
         {
             button3.Enabled = true;
             button4.Enabled = false;
@@ -101,8 +101,11 @@ namespace Gestion_Biblio
             button1.Text = "Modifier";
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //Identifier l'auteur
         {
+            string[] np = comboBox1.Text.Split(' ');
+            textBox1.Text = np[0];
+            textBox2.Text = np[1];
             cnx.Open();
             string requete = "SELECT [IDA] FROM [AUTEUR] where ([NOMA]+' '+[PRENOMA]) = @Auteur";
             SqlCommand cmd = new SqlCommand(requete, cnx);
@@ -120,7 +123,7 @@ namespace Gestion_Biblio
         {
             this.Load_All_Auteur();
         }
-        private void Load_All_Auteur()
+        private void Load_All_Auteur() //Charger tous le auteurs
         {
                 comboBox1.Items.Clear();
                 label4.Text = "";

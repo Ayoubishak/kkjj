@@ -11,7 +11,7 @@ namespace Gestion_Biblio
     class Gestion_oeuvre_et_exemplaire
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
-        public void Ajoutermagazine(string titre)
+        public void Ajoutermagazine(string titre) //Ajouter magazine
         {
             Magazine m = new Magazine(0, titre);
             cnx.Open();
@@ -23,7 +23,7 @@ namespace Gestion_Biblio
             MessageBox.Show("Le Magazine a été ajouter avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();
         }
-        public void Majmagazine(int idm, string titre)
+        public void Majmagazine(int idm, string titre) //Modifier magazine
         {
             cnx.Open();
             string requete = "UPDATE [OEUVRE] SET [TITRE] = @Titre WHERE [IDO]=@Id";
@@ -34,7 +34,7 @@ namespace Gestion_Biblio
             MessageBox.Show("Le Magazine a été modifier avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();
         }
-        public void Ajouterlivre(string titre,int ida)
+        public void Ajouterlivre(string titre,int ida) //Ajouter livre
         {
             Auteur a = new Auteur();
             Livre l = new Livre(0,titre,a.Identifier(ida));
@@ -48,7 +48,7 @@ namespace Gestion_Biblio
             MessageBox.Show("Le Livre a été ajouter avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();
         }
-        public void Majlivre(int idl, string titre, int ida)
+        public void Majlivre(int idl, string titre, int ida) //Modifier livre
         {
             cnx.Open();
             string requete = "UPDATE [OEUVRE] SET [TITRE] = @Titre, [IDA] = @Ida WHERE [IDO]=@Id";
@@ -60,7 +60,7 @@ namespace Gestion_Biblio
             MessageBox.Show("Le Livre a été modifier avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();
         }
-        public void Ajouterexemplaire(int ido, string etat)
+        public void Ajouterexemplaire(int ido, string etat) //Ajouter exemplaire
         {
             Oeuvre o = new Oeuvre();
             o = o.Identifier(ido);
@@ -74,7 +74,7 @@ namespace Gestion_Biblio
             MessageBox.Show("L'Exemplaire a été ajouter avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();
         }
-        public void Majexemplaire(int ide, string etat)
+        public void Majexemplaire(int ide, string etat) //Modifier exemplaire
         {
             cnx.Open();
             string requete = "UPDATE [EXEMPLAIRE] SET [ETAT] = @Etat WHERE [IDE] = @Ide";
@@ -85,7 +85,7 @@ namespace Gestion_Biblio
             MessageBox.Show("L'Exemplaire a été modifier avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             cnx.Close();
         }
-        public void Retirerexemplaire(int ide)
+        public void Retirerexemplaire(int ide) //Retirer exemplaire
         {
             cnx.Open();
             string requete = "UPDATE [EXEMPLAIRE] SET [DISPONIBLE] = 0 WHERE [IDE] = @Ide";

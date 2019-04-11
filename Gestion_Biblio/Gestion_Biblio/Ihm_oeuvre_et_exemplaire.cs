@@ -19,7 +19,7 @@ namespace Gestion_Biblio
             InitializeComponent();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e) //Modifier le formulaire pour la gestion des exemplaires
         {
             button2_Click(null, null);
             button9.Enabled = false;
@@ -34,7 +34,7 @@ namespace Gestion_Biblio
                 panel5.Visible = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Réinitialiser le formulaire
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -54,7 +54,7 @@ namespace Gestion_Biblio
             textBox1.Text = "";
         }
 
-        public void Ajoutermagazine(string titre)
+        public void Ajoutermagazine(string titre) //Ajouter magazine
         {
             Gestion_oeuvre_et_exemplaire goe = new Gestion_oeuvre_et_exemplaire();
             goe.Ajoutermagazine(titre);
@@ -62,7 +62,7 @@ namespace Gestion_Biblio
             this.Load_All_Magazine();
         }
 
-        public void Majmagazine(int idm, string titre)
+        public void Majmagazine(int idm, string titre) //Modifier magazine
         {
             Gestion_oeuvre_et_exemplaire goe = new Gestion_oeuvre_et_exemplaire();
             goe.Majmagazine(idm, titre);
@@ -70,7 +70,7 @@ namespace Gestion_Biblio
             this.Load_All_Magazine();
         }
 
-        public void Ajouterlivre(string titre, int ida)
+        public void Ajouterlivre(string titre, int ida) //Ajouter livre
         {
             Gestion_oeuvre_et_exemplaire goe = new Gestion_oeuvre_et_exemplaire();
             goe.Ajouterlivre(titre, ida);
@@ -78,7 +78,7 @@ namespace Gestion_Biblio
             this.Load_All_Livre();
         }
 
-        public void Majlivre(int idl, string titre, int ida)
+        public void Majlivre(int idl, string titre, int ida) //Modifier livre
         {
             Gestion_oeuvre_et_exemplaire goe = new Gestion_oeuvre_et_exemplaire();
             goe.Majlivre(idl, titre, ida);
@@ -86,7 +86,7 @@ namespace Gestion_Biblio
             this.Load_All_Livre();
         }
 
-        public void Ajouterexemplaire(int ido, string etat)
+        public void Ajouterexemplaire(int ido, string etat) //Ajouter exemplaire
         {
             Gestion_oeuvre_et_exemplaire goe = new Gestion_oeuvre_et_exemplaire();
             goe.Ajouterexemplaire(ido, etat);
@@ -97,7 +97,7 @@ namespace Gestion_Biblio
             button2_Click(null, null); 
         }
 
-        public void Majexemplaire(int ide, string etat)
+        public void Majexemplaire(int ide, string etat) //Modifier exemplaire
         {
             Gestion_oeuvre_et_exemplaire goe = new Gestion_oeuvre_et_exemplaire();
             goe.Majexemplaire(ide, etat);
@@ -108,7 +108,7 @@ namespace Gestion_Biblio
             button2_Click(null, null);
         }
 
-        public void Retirerexemplaire(int ide)
+        public void Retirerexemplaire(int ide) //Retirer exemplaire
         {
             Gestion_oeuvre_et_exemplaire goe = new Gestion_oeuvre_et_exemplaire();
             goe.Retirerexemplaire(ide);
@@ -126,7 +126,7 @@ namespace Gestion_Biblio
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //Executer (Ajout, Modification, Retrait) pour oeuvre ou exemplaire
         {
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -200,7 +200,7 @@ namespace Gestion_Biblio
                 }
             }
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e) //Modifier le formulaire pour la saisie des informations d'un livre
         {
             button2_Click(null, null);
             this.Load_All_Livre();
@@ -212,7 +212,7 @@ namespace Gestion_Biblio
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e) //Modifier le formulaire pour la saisie des informations d'un magazine
         {
             button2_Click(null, null);
             this.Load_All_Magazine();
@@ -224,7 +224,7 @@ namespace Gestion_Biblio
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //Modifier le formulaire pour l'ajout
         {
             if (button9.Enabled == false)
                 panel5.Visible = false;           
@@ -242,7 +242,7 @@ namespace Gestion_Biblio
             errorProvider6.Clear();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e) //Modifier le formulaire pour la modification
         {
             if (button9.Enabled == false)
                 panel5.Visible = true;
@@ -260,7 +260,7 @@ namespace Gestion_Biblio
             errorProvider6.Clear();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e) //Modifier le formulaire pour retirer un exemplaire
         {
             if (button9.Enabled == false)
                 panel5.Visible = true;
@@ -277,7 +277,7 @@ namespace Gestion_Biblio
             errorProvider5.Clear();
             errorProvider6.Clear();
         }
-        private void Load_All_Magazine()
+        private void Load_All_Magazine() //Charger tous les magazine
         {
             label8.Text = "";
             label6.Text = "";
@@ -295,7 +295,7 @@ namespace Gestion_Biblio
             Dr.Close();
             cnx.Close();
         }
-        private void Load_All_Livre()
+        private void Load_All_Livre() //Charger tous les livres
         {
             label8.Text = "";
             label6.Text = "";
@@ -313,7 +313,7 @@ namespace Gestion_Biblio
             Dr.Close();
             cnx.Close();
         }
-        private void Load_All_Exemplaire()
+        private void Load_All_Exemplaire() //Charger tous les exemplaires
         {
             comboBox5.Items.Clear();
             cnx.Open();
@@ -329,7 +329,7 @@ namespace Gestion_Biblio
             cnx.Close();
         }
 
-        private void Load_All_Auteur()
+        private void Load_All_Auteur() //Charger tous les auteurs
         {
             comboBox2.Items.Clear();
             label7.Text = "";
@@ -345,7 +345,7 @@ namespace Gestion_Biblio
             cnx.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //Identifier l'id d'une oeuvre
         {
             label6.Text = "";
             Auteur a = new Auteur();
@@ -374,7 +374,7 @@ namespace Gestion_Biblio
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) //Identifier l'id d'un auteur
         {
             cnx.Open();
             string requete = "SELECT [IDA] FROM [AUTEUR] where ([NOMA]+' '+[PRENOMA]) = @Auteur";
@@ -389,7 +389,7 @@ namespace Gestion_Biblio
             cnx.Close();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button8_Click(object sender, EventArgs e) //Modifier le formulaire pour la gestion des oeuvres
         {
             button2_Click(null, null);
             button9.Enabled = true;
@@ -405,7 +405,7 @@ namespace Gestion_Biblio
                 button5_Click(null, null);
         }
 
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e) //Identifier l'id d'une oeuvre
         {
             label8.Text = "";
             string requete = "";
@@ -446,7 +446,7 @@ namespace Gestion_Biblio
 
         }
 
-        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e) // Identifier l'id d'un exemplaire
         {
             cnx.Open();
             string requete = "SELECT [ETAT] FROM [EXEMPLAIRE] WHERE [IDE]= @Ide";
@@ -459,6 +459,11 @@ namespace Gestion_Biblio
             }
             Dr.Close();
             cnx.Close();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

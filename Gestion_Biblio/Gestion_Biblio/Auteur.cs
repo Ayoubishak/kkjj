@@ -29,7 +29,7 @@ namespace Gestion_Biblio
             this.prenom = prenom;
         }
 
-        public Auteur Identifier(int id)
+        public Auteur Identifier(int id) //Identifier auteur
         {
             Auteur a = new Auteur();
             a.Id = id;

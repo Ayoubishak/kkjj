@@ -46,7 +46,7 @@ namespace Gestion_Biblio
             this.usagersup = false;
         }
 
-        public Usager Identifier(int id)
+        public Usager Identifier(int id) //Identifier usager
         {
             Usager u = new Usager();
             u.Id = id;

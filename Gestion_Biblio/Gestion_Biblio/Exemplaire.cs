@@ -31,7 +31,7 @@ namespace Gestion_Biblio
             this.Oeuvre = oeuvre;
         }
 
-        public Exemplaire Identifier(int id)
+        public Exemplaire Identifier(int id) //Identifier exemplaire
         {
             Oeuvre o = new Oeuvre();
             Exemplaire e = new Exemplaire();
