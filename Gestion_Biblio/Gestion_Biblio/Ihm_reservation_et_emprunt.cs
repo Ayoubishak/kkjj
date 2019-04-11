@@ -139,6 +139,10 @@ namespace Gestion_Biblio
 
         private void button3_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
+            errorProvider4.Clear();
             if (button5.Enabled == false)
             {
                 button1.Text = "Emprunter";
@@ -158,6 +162,10 @@ namespace Gestion_Biblio
 
         private void button4_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
+            errorProvider4.Clear();
             if (button5.Enabled == false)
             {
                 button1.Text = "Retourner";
@@ -218,6 +226,10 @@ namespace Gestion_Biblio
 
         private void button2_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
+            errorProvider4.Clear();
             button3_Click(null, null);
             comboBox1.SelectedIndex = -1;
             comboBox2.SelectedIndex = -1;
@@ -268,22 +280,65 @@ namespace Gestion_Biblio
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (button1.Text == "Emprunter")
+            Boolean b = false;
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
+            errorProvider4.Clear();
+
+            if (comboBox1.Text == string.Empty)
             {
-                this.Emprunter(int.Parse(label4.Text),int.Parse(comboBox3.Text));
+                errorProvider1.SetError(comboBox1, "il faut choisir un usager");
+                b = true;
             }
-            if (button1.Text == "Réserver")
+
+            if (comboBox2.Text == string.Empty && button3.Enabled == false)
             {
-                this.Reserver(int.Parse(label4.Text), int.Parse(label5.Text));
+                errorProvider2.SetError(comboBox2, "il faut choisir une oeuvre");
+                b = true;
             }
-            if (button1.Text == "Retourner")
+
+            if (comboBox3.Text == string.Empty && button3.Enabled == false && button5.Enabled == false)
             {
-                this.Rendre(int.Parse(label4.Text), int.Parse(comboBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString()));
+                errorProvider3.SetError(comboBox3, "il faut choisir un exemplaire");
+                b = true;
             }
-            if (button1.Text == "Annuler Réservation")
+
+            if (dataGridView1.SelectedRows.Count == 0 && button6.Enabled == false && button4.Enabled==false)
             {
-                this.Annuler(int.Parse(label4.Text), int.Parse(label5.Text));
+                errorProvider4.SetError(dataGridView1, "il faut choisir une réservation a annuler");
+                b = true;
             }
+
+            if (dataGridView1.SelectedRows.Count == 0 && button5.Enabled == false && button4.Enabled == false)
+            {
+                errorProvider4.SetError(dataGridView1, "il faut choisir un emprunt a rendre");
+                b = true;
+            }
+            if (b == false)
+            {
+                if (button1.Text == "Emprunter")
+                {
+                    this.Emprunter(int.Parse(label4.Text), int.Parse(comboBox3.Text));
+                }
+                if (button1.Text == "Réserver")
+                {
+                    this.Reserver(int.Parse(label4.Text), int.Parse(label5.Text));
+                }
+                if (button1.Text == "Retourner")
+                {
+                    this.Rendre(int.Parse(label4.Text), int.Parse(comboBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString()));
+                }
+                if (button1.Text == "Annuler Réservation")
+                {
+                    this.Annuler(int.Parse(label4.Text), int.Parse(label5.Text));
+                }
+            }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

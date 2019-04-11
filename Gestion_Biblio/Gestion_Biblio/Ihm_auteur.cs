@@ -135,5 +135,10 @@ namespace Gestion_Biblio
                 Dr.Close();
                 cnx.Close();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
