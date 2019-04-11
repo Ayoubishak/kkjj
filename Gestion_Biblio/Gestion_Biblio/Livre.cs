@@ -13,6 +13,7 @@ namespace Gestion_Biblio
         private int delai_retour = 10;
         private Auteur auteur;
 
+        //Getter Setter
         public int Delai_retour { get => delai_retour; set => delai_retour = value; }
         internal Auteur Auteur { get => auteur; set => auteur = value; }
 

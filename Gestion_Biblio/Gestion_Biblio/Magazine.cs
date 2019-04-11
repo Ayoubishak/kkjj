@@ -12,6 +12,7 @@ namespace Gestion_Biblio
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
         private int delai_retour = 30;
 
+        //Getter Setter
         public int Delai_retour { get => delai_retour; set => delai_retour = value; }
 
         public Magazine()

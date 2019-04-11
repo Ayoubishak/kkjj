@@ -13,7 +13,7 @@ namespace Gestion_Biblio
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
         public void Ajouter(string nom, string prenom, string address, string tel, string email) //Ajouter usager
         {
-            Usager u = new Usager(0, nom, prenom, address, tel, email);
+            Usager u = new Usager(0, nom, prenom, address, tel, email, 0, false);
             //Vérifier ci usager active existe 
             int t = 0;
             cnx.Open();

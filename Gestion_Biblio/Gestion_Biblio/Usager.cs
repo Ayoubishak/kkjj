@@ -16,9 +16,10 @@ namespace Gestion_Biblio
         private string address;
         private string tel;
         private string email;
-        private int retard;
-        private Boolean usagersup;
+        private int retard = 0;
+        private Boolean usagersup = false;
 
+        //Getter Setter
         public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
@@ -30,11 +31,10 @@ namespace Gestion_Biblio
 
         public Usager()
         {
-            this.retard = 0;
-            this.usagersup = false;
+
         }
 
-        public Usager(int id, string nom, string prenom, string address, string tel, string email)
+        public Usager(int id, string nom, string prenom, string address, string tel, string email, int retard, Boolean usagersup)
         {
             this.id = id;
             this.nom = nom;
@@ -42,8 +42,8 @@ namespace Gestion_Biblio
             this.address = address;
             this.tel = tel;
             this.email = email;
-            this.retard = 0;
-            this.usagersup = false;
+            this.retard = retard;
+            this.usagersup = usagersup;
         }
 
         public Usager Identifier(int id) //Identifier usager

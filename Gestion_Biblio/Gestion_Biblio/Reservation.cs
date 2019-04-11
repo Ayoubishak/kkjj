@@ -15,6 +15,7 @@ namespace Gestion_Biblio
         private Usager usager;
         private Oeuvre oeuvre;
 
+        //Getter Setter
         public DateTime Datejour { get => datejour; set => datejour = value; }
         public DateTime? Dateretour { get => dateretour; set => dateretour = value; }
         internal Usager Usager { get => usager; set => usager = value; }

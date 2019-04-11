@@ -15,6 +15,7 @@ namespace Gestion_Biblio
         private Boolean disponible =true;
         private Oeuvre oeuvre;
 
+        //Getter Setter
         public int Id { get => id; set => id = value; }
         public string Etat { get => etat; set => etat = value; }
         public bool Disponible { get => disponible; set => disponible = value; }

@@ -13,6 +13,7 @@ namespace Gestion_Biblio
         private int id;
         private string titre;
 
+        //Getter Setter
         public int Id { get => id; set => id = value; }
         public string Titre { get => titre; set => titre = value; }
 

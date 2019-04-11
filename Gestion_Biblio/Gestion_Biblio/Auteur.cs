@@ -14,6 +14,7 @@ namespace Gestion_Biblio
         private string nom;
         private string prenom;
 
+        //Getter Setter
         public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
