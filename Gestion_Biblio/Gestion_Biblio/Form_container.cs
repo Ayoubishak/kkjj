@@ -65,5 +65,10 @@ namespace Gestion_Biblio
             ire.Dock = DockStyle.Fill;
             ire.Show();
         }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
