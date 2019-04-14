@@ -17,7 +17,7 @@ namespace Gestion_Biblio
             InitializeComponent();
         }
 
-        public void fermer()
+        public void fermer_All() //Fermer toute les intérfaces
         {
             foreach (Form frm in this.MdiChildren)
             {
@@ -26,9 +26,9 @@ namespace Gestion_Biblio
             return;
         }
 
-        private void gestionToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gestionToolStripMenuItem_Click(object sender, EventArgs e) //Ouvrir intérface gestion usager
         {
-            fermer();
+            fermer_All();
             this.Text = "Gestion Usager";
             Ihm_usager iu = new Ihm_usager();
             iu.MdiParent = this;
@@ -36,9 +36,9 @@ namespace Gestion_Biblio
             iu.Show();
         }
 
-        private void gestionAuteurToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void gestionAuteurToolStripMenuItem1_Click(object sender, EventArgs e) //Ouvrir intérface gestion auteur
         {
-            fermer();
+            fermer_All();
             this.Text = "Gestion Auteur";
             Ihm_auteur ia = new Ihm_auteur();
             ia.MdiParent = this;
@@ -46,9 +46,9 @@ namespace Gestion_Biblio
             ia.Show();
         }
 
-        private void gestionOeuvreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gestionOeuvreToolStripMenuItem_Click(object sender, EventArgs e) //Ouvrir intérface gestion oeuvre et exemplaire
         {
-            fermer();
+            fermer_All();
             this.Text = "Gestion Oeuvre et Exemplaire";
             Ihm_oeuvre_et_exemplaire ioe = new Ihm_oeuvre_et_exemplaire();
             ioe.MdiParent = this;
@@ -56,9 +56,9 @@ namespace Gestion_Biblio
             ioe.Show();
         }
 
-        private void gestionToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void gestionToolStripMenuItem1_Click(object sender, EventArgs e) //Ouvrir intérface gestion réservation et emprunt
         {
-            fermer();
+            fermer_All();
             this.Text = "Gestion Reservation et Emprunt";
             Ihm_reservation_et_emprunt ire = new Ihm_reservation_et_emprunt();
             ire.MdiParent = this;
@@ -67,6 +67,11 @@ namespace Gestion_Biblio
         }
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form_container_Load(object sender, EventArgs e)
         {
 
         }

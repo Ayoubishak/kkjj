@@ -67,6 +67,7 @@
             this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -80,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).BeginInit();
             this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -245,7 +247,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Abimé",
             "Bon état"});
-            this.comboBox3.Location = new System.Drawing.Point(128, 14);
+            this.comboBox3.Location = new System.Drawing.Point(62, 7);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.Sorted = true;
@@ -255,7 +257,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(76, 17);
+            this.label4.Location = new System.Drawing.Point(10, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 16;
@@ -321,9 +323,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel6);
-            this.panel1.Controls.Add(this.comboBox3);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(124, 219);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(550, 73);
@@ -448,6 +449,16 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(717, 335);
             this.panel7.TabIndex = 30;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.comboBox3);
+            this.panel8.Controls.Add(this.label4);
+            this.panel8.Location = new System.Drawing.Point(66, 7);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(184, 38);
+            this.panel8.TabIndex = 17;
             // 
             // Ihm_oeuvre_et_exemplaire
             // 
@@ -460,7 +471,6 @@
             this.Text = "Gestion Oeuvre et Exemplaire";
             this.Load += new System.EventHandler(this.Ihm_oeuvre_et_exemplaire_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -479,6 +489,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider6)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -523,5 +535,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider5;
         private System.Windows.Forms.ErrorProvider errorProvider6;
         private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
     }
 }

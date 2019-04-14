@@ -155,7 +155,7 @@ namespace Gestion_Biblio
                 errorProvider4.SetError(comboBox5, "il faut choisir un Exemplaire");
                 b = true;
             }
-            if (comboBox3.Text == string.Empty && button9.Enabled == false)
+            if (comboBox3.Text == string.Empty && button9.Enabled == false && button7.Enabled == true)
             {
                 errorProvider5.SetError(comboBox3, "il faut choisir un Etat");
                 b = true;
@@ -227,7 +227,10 @@ namespace Gestion_Biblio
         private void button5_Click(object sender, EventArgs e) //Modifier le formulaire pour l'ajout
         {
             if (button9.Enabled == false)
-                panel5.Visible = false;           
+            {
+                panel5.Visible = true;
+                panel8.Visible = true;
+            }           
             panel6.Visible = true;
             panel2.Visible = false;
             button5.Enabled = false;
@@ -245,7 +248,10 @@ namespace Gestion_Biblio
         private void button6_Click(object sender, EventArgs e) //Modifier le formulaire pour la modification
         {
             if (button9.Enabled == false)
+            {
                 panel5.Visible = true;
+                panel8.Visible = true;
+            }
             panel6.Visible = false;
             panel2.Visible = true;
             button5.Enabled = true;
@@ -263,7 +269,10 @@ namespace Gestion_Biblio
         private void button7_Click(object sender, EventArgs e) //Modifier le formulaire pour retirer un exemplaire
         {
             if (button9.Enabled == false)
+            {
                 panel5.Visible = true;
+                panel8.Visible = false;
+            }  
             panel6.Visible = false;
             panel2.Visible = true;
             button5.Enabled = true;
@@ -462,6 +471,11 @@ namespace Gestion_Biblio
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
         {
 
         }
