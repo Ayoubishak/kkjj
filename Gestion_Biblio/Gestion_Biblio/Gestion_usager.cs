@@ -11,9 +11,9 @@ namespace Gestion_Biblio
     class Gestion_usager
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
-        public void Ajouter(string nom, string prenom, string adress, string tel, string email) //Ajouter usager
+        public void Ajouter(string nom, string prenom, string adresse, string tel, string email) //Ajouter usager
         {
-            Usager u = new Usager(0, nom, prenom, adress, tel, email, 0, false);
+            Usager u = new Usager(0, nom, prenom, adresse, tel, email, 0, false);
             //Vérifier ci usager active existe 
             int t = 0;
             cnx.Open();
@@ -36,11 +36,11 @@ namespace Gestion_Biblio
             else
             {
                 cnx.Open();
-                requete = "INSERT INTO [USAGER] ([NOM],[PRENOM],[ADRESS],[TEL],[EMAIL]) VALUES (@Nom,@Prenom,@Adress,@Tel,@Email)";
+                requete = "INSERT INTO [USAGER] ([NOM],[PRENOM],[ADRESSE],[TEL],[EMAIL]) VALUES (@Nom,@Prenom,@Adresse,@Tel,@Email)";
                 cmd = new SqlCommand(requete, cnx);
                 cmd.Parameters.AddWithValue("@Nom", u.Nom);
                 cmd.Parameters.AddWithValue("@Prenom", u.Prenom);
-                cmd.Parameters.AddWithValue("@Adress", u.Adress);
+                cmd.Parameters.AddWithValue("@Adresse", u.Adresse);
                 cmd.Parameters.AddWithValue("@Tel", u.Tel);
                 cmd.Parameters.AddWithValue("@Email", u.Email);
                 cmd.ExecuteNonQuery();
@@ -49,7 +49,7 @@ namespace Gestion_Biblio
             }
         }
 
-        public void Maj(int idu, string nom, string prenom, string adress, string tel, string email, int retard)
+        public void Maj(int idu, string nom, string prenom, string adresse, string tel, string email, int retard)
         {
             //Vérifier ci usager active existe 
             int t = 0;
@@ -74,12 +74,12 @@ namespace Gestion_Biblio
             else
             {
                 cnx.Open();
-                requete = "UPDATE [USAGER] SET [NOM] =@Nom ,[PRENOM] =@Prenom ,[ADRESS] =@Adress ,[TEL] =@Tel ,[EMAIL] =@Email ,[RETARD] =@Retard WHERE [IDU] = @Id";
+                requete = "UPDATE [USAGER] SET [NOM] =@Nom ,[PRENOM] =@Prenom ,[ADRESSE] =@Adresse ,[TEL] =@Tel ,[EMAIL] =@Email ,[RETARD] =@Retard WHERE [IDU] = @Id";
                 cmd = new SqlCommand(requete, cnx);
                 cmd.Parameters.AddWithValue("@Id", idu);
                 cmd.Parameters.AddWithValue("@Nom", nom);
                 cmd.Parameters.AddWithValue("@Prenom", prenom);
-                cmd.Parameters.AddWithValue("@Adress", adress);
+                cmd.Parameters.AddWithValue("@Adresse", adresse);
                 cmd.Parameters.AddWithValue("@Tel", tel);
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@Retard", retard);

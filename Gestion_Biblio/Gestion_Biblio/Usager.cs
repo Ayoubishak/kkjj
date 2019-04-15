@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gestion_Biblio
 {
@@ -13,7 +9,7 @@ namespace Gestion_Biblio
         private int id;
         private string nom;
         private string prenom;
-        private string adress;
+        private string adresse;
         private string tel;
         private string email;
         private int retard = 0;
@@ -23,7 +19,7 @@ namespace Gestion_Biblio
         public int Id { get => id; set => id = value; }
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
-        public string Adress { get => adress; set => adress = value; }
+        public string Adresse { get => adresse; set => adresse = value; }
         public string Tel { get => tel; set => tel = value; }
         public string Email { get => email; set => email = value; }
         public int Retard { get => retard; set => retard = value; }
@@ -34,12 +30,12 @@ namespace Gestion_Biblio
 
         }
 
-        public Usager(int id, string nom, string prenom, string adress, string tel, string email, int retard, Boolean usagersup)
+        public Usager(int id, string nom, string prenom, string adresse, string tel, string email, int retard, Boolean usagersup)
         {
             this.id = id;
             this.nom = nom;
             this.prenom = prenom;
-            this.adress = adress;
+            this.adresse = adresse;
             this.tel = tel;
             this.email = email;
             this.retard = retard;
@@ -59,7 +55,7 @@ namespace Gestion_Biblio
             {
                 u.Nom = Dr[1].ToString();
                 u.Prenom = Dr[2].ToString();
-                u.Adress= Dr[3].ToString();
+                u.Adresse= Dr[3].ToString();
                 u.Tel= Dr[4].ToString();
                 u.Email=Dr[5].ToString();
                 u.Retard= int.Parse(Dr[6].ToString());

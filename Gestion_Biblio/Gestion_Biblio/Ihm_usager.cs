@@ -78,17 +78,17 @@ namespace Gestion_Biblio
             }
         }
 
-        private void Ajouter(string nom, string prenom, string adress, string tel, string email) //Ajouter Usager
+        private void Ajouter(string nom, string prenom, string adresse, string tel, string email) //Ajouter Usager
         {
             Gestion_usager gu = new Gestion_usager();
-            gu.Ajouter(nom, prenom, adress, tel, email);
+            gu.Ajouter(nom, prenom, adresse, tel, email);
             button2_Click(null, null);
             this.Load_All_Usager();
         }
-        private void Maj(int idu, string nom, string prenom, string adress, string tel, string email,int retard) //Modifier Usager
+        private void Maj(int idu, string nom, string prenom, string adresse, string tel, string email,int retard) //Modifier Usager
         {
             Gestion_usager gu = new Gestion_usager();
-            gu.Maj(idu, nom, prenom, adress, tel, email, retard);
+            gu.Maj(idu, nom, prenom, adresse, tel, email, retard);
             button2_Click(null, null);
             this.Load_All_Usager();
         }
