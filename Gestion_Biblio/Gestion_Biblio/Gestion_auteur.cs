@@ -31,7 +31,7 @@ namespace Gestion_Biblio
             //Si Non, ajouter auteur
             if (t > 0)
             {
-                MessageBox.Show("Auteur éxiste déja !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Auteur éxiste déja !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -65,7 +65,7 @@ namespace Gestion_Biblio
             //Si Non, modifier auteur
             if (t > 0)
             {
-                MessageBox.Show("Auteur éxiste déja !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Auteur éxiste déja !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

@@ -120,7 +120,7 @@ namespace Gestion_Biblio
                 MessageBox.Show("Oeuvre a été réserver avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
-                MessageBox.Show("L'usager a déja réserver cette oeuvre", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("L'Usager a déja réserver cette oeuvre", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void Annuler(int idu, int ido) //Annuler réservation

@@ -30,7 +30,7 @@ namespace Gestion_Biblio
             cnx.Close();
             if (t > 0)
             {
-                MessageBox.Show("Usager éxiste déja !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Usager éxiste déja !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             //Si Non, Ajouter l'usager
             else
@@ -68,7 +68,7 @@ namespace Gestion_Biblio
             cnx.Close();
             if (t > 0)
             {
-                MessageBox.Show("Usager éxiste déja !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Usager éxiste déja !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             //Si Non, modifier l'usager
             else
