@@ -51,7 +51,11 @@ namespace Gestion_Biblio
                     this.Ajouter(textBox1.Text, textBox2.Text);
 
                 else
-                    this.Majauteur(int.Parse(label4.Text), textBox1.Text, textBox2.Text);
+                {
+                    DialogResult r = MessageBox.Show("Voulez-vous vraiment modifier cet auteur ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if(r==DialogResult.Yes)
+                        this.Majauteur(int.Parse(label4.Text), textBox1.Text, textBox2.Text);
+                }
             }
         }
         

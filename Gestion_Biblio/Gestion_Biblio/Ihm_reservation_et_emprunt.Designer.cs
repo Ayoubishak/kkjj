@@ -241,6 +241,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 13);
             this.label4.TabIndex = 14;
+            this.label4.Visible = false;
             // 
             // label5
             // 

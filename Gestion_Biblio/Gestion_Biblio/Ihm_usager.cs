@@ -26,7 +26,6 @@ namespace Gestion_Biblio
 
         private void button1_Click(object sender, EventArgs e) //Executer (Ajout, Modification, Retrait) d'un usager
         {
-            DialogResult r;
             Boolean b = false;
             errorProvider1.Clear();
             errorProvider2.Clear();
@@ -73,13 +72,13 @@ namespace Gestion_Biblio
                 {
                     if (button1.Text == "Modifier")
                     {
-                        r = MessageBox.Show("Voulez-vous vraiment modifier l'usager ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult r = MessageBox.Show("Voulez-vous vraiment modifier cet usager ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (r == DialogResult.Yes)
                             this.Maj(int.Parse(comboBox1.Text), textBox1.Text, textBox2.Text, richTextBox1.Text, textBox3.Text, textBox4.Text, int.Parse(numericUpDown1.Value.ToString()));
                     }
                     else
                     {
-                        r = MessageBox.Show("Voulez-vous vraiment retirer l'usager ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult r = MessageBox.Show("Voulez-vous vraiment retirer cet usager ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (r == DialogResult.Yes)
                             this.Retirer(int.Parse(comboBox1.Text.ToString()));
                     }

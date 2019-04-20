@@ -331,7 +331,9 @@ namespace Gestion_Biblio
                 }
                 if (button1.Text == "Annuler Réservation")
                 {
-                    this.Annuler(int.Parse(label4.Text), int.Parse(label5.Text));
+                    DialogResult r = MessageBox.Show("Voulez-vous vraiment annuler cette réservation ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (r == DialogResult.Yes)
+                        this.Annuler(int.Parse(label4.Text), int.Parse(label5.Text));
                 }
             }
         }

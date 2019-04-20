@@ -179,11 +179,15 @@ namespace Gestion_Biblio
                     }
                     if (button1.Text == "Modifier")
                     {
-                        if (button4.Enabled == false)
-                            this.Majmagazine(int.Parse(label6.Text), textBox1.Text);
+                        DialogResult r = MessageBox.Show("Voulez-vous vraiment modifier cet oeuvre ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (r == DialogResult.Yes)
+                        {
+                            if (button4.Enabled == false)
+                                this.Majmagazine(int.Parse(label6.Text), textBox1.Text);
 
-                        else
-                            this.Majlivre(int.Parse(label6.Text), textBox1.Text, int.Parse(label7.Text));
+                            else
+                                this.Majlivre(int.Parse(label6.Text), textBox1.Text, int.Parse(label7.Text));
+                        }
                     }
                 }
                 else
@@ -193,9 +197,17 @@ namespace Gestion_Biblio
                     else
                     {
                         if (button1.Text == "Modifier")
-                            this.Majexemplaire(int.Parse(comboBox5.Text), comboBox3.Text);
+                        {
+                            DialogResult r = MessageBox.Show("Voulez-vous vraiment modifier cet exemplaire ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (r == DialogResult.Yes)
+                                this.Majexemplaire(int.Parse(comboBox5.Text), comboBox3.Text);
+                        }
                         else
-                            this.Retirerexemplaire(int.Parse(comboBox5.Text));
+                        {
+                            DialogResult r = MessageBox.Show("Voulez-vous vraiment retirer cet exemplaire ?", "Attention !", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (r == DialogResult.Yes)
+                                this.Retirerexemplaire(int.Parse(comboBox5.Text));
+                        }
                     }
                 }
             }
