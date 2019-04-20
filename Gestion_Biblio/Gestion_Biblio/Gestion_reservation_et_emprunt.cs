@@ -64,7 +64,7 @@ namespace Gestion_Biblio
             MessageBox.Show("Action a été éxecuter avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        public void Rendre(int idu, int ide) //Ajout de Date de retour pour un emprunt spécifique
+        public void Rendre(int idu, int ide, string etat) //Ajout de Date de retour pour un emprunt spécifique
         {
             //Ajouter la date de retour a l'emprunt
             cnx.Open();
@@ -75,11 +75,12 @@ namespace Gestion_Biblio
             cmd.ExecuteNonQuery();
             cnx.Close();
 
-            //Rendre l'éxemplaire emprunter disponible
+            //Rendre l'éxemplaire emprunter disponible et enregister son nouveaux état
             cnx.Open();
-            requete = "UPDATE [EXEMPLAIRE] SET [DISPONIBLE] = 1 WHERE [IDE] =@Ide";
+            requete = "UPDATE [EXEMPLAIRE] SET [DISPONIBLE] = 1, [ETAT] =@Etat WHERE [IDE] =@Ide";
             cmd = new SqlCommand(requete, cnx);
             cmd.Parameters.AddWithValue("@Ide", ide);
+            cmd.Parameters.AddWithValue("@Etat", etat);
             cmd.ExecuteNonQuery();
             cnx.Close();
             MessageBox.Show("Action a été éxecuter avec Succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);

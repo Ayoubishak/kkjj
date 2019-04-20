@@ -154,6 +154,7 @@ namespace Gestion_Biblio
                 label7.Text = "Liste des réservations en cours";
             }
             panel2.Visible = true;
+            panel4.Visible = false;
             button3.Enabled = false;
             button4.Enabled = true;
             comboBox2.Items.Clear();
@@ -169,11 +170,13 @@ namespace Gestion_Biblio
             if (button5.Enabled == false)
             {
                 button1.Text = "Retourner";
+                panel4.Visible = true;
                 label7.Text = "Choisisez une oeuvre a rendre";
             }
             else
             {
                 button1.Text = "Annuler Réservation";
+                panel4.Visible = false;
                 label7.Text = "Choisisez une réservation a annuler";
             }
             panel2.Visible = false;
@@ -217,6 +220,7 @@ namespace Gestion_Biblio
             button3.Text = "Réserver Oeuvre";
             button4.Text = "Annuler réservation";
             panel1.Visible = false;
+            panel4.Visible = false;
             button5.Enabled = true;
             button6.Enabled = false;
             dataGridView1.DataSource = null;
@@ -230,10 +234,12 @@ namespace Gestion_Biblio
             errorProvider2.Clear();
             errorProvider3.Clear();
             errorProvider4.Clear();
+            errorProvider5.Clear();
             button3_Click(null, null);
             comboBox1.SelectedIndex = -1;
             comboBox2.SelectedIndex = -1;
             comboBox3.SelectedIndex = -1;
+            comboBox4.SelectedIndex = -1;
             label4.Text = "";
             label5.Text = "";
         }
@@ -256,10 +262,10 @@ namespace Gestion_Biblio
             this.Load_Datagridview();
             button2_Click(null, null);
         }
-        public void Rendre(int idu, int ide) //Retour de l'exemplaire
+        public void Rendre(int idu, int ide, string etat) //Retour de l'exemplaire
         {
             Gestion_reservation_et_emprunt gre = new Gestion_reservation_et_emprunt();
-            gre.Rendre(idu, ide);
+            gre.Rendre(idu, ide, etat);
             this.Load_Datagridview();
             button2_Click(null, null);
         }
@@ -285,6 +291,7 @@ namespace Gestion_Biblio
             errorProvider2.Clear();
             errorProvider3.Clear();
             errorProvider4.Clear();
+            errorProvider5.Clear();
 
             if (comboBox1.Text == string.Empty)
             {
@@ -315,6 +322,13 @@ namespace Gestion_Biblio
                 errorProvider4.SetError(dataGridView1, "il faut choisir un emprunt a rendre");
                 b = true;
             }
+
+            if (comboBox4.Text == string.Empty && button4.Enabled == false && button5.Enabled == false)
+            {
+                errorProvider5.SetError(comboBox4, "il faut choisir un état");
+                b = true;
+            }
+
             if (b == false)
             {
                 if (button1.Text == "Emprunter")
@@ -327,7 +341,7 @@ namespace Gestion_Biblio
                 }
                 if (button1.Text == "Retourner")
                 {
-                    this.Rendre(int.Parse(label4.Text), int.Parse(comboBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString()));
+                    this.Rendre(int.Parse(label4.Text), int.Parse(comboBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString()), comboBox4.Text);
                 }
                 if (button1.Text == "Annuler Réservation")
                 {
