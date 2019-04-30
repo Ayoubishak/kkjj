@@ -11,6 +11,8 @@ namespace Gestion_Biblio
     class Gestion_oeuvre_et_exemplaire
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
+        Auteur a = new Auteur();
+        Oeuvre o = new Oeuvre();
         public void Ajoutermagazine(string titre) //Ajouter magazine
         {
             Magazine m = new Magazine(0, titre);
@@ -36,7 +38,6 @@ namespace Gestion_Biblio
         }
         public void Ajouterlivre(string titre,int ida) //Ajouter livre
         {
-            Auteur a = new Auteur();
             Livre l = new Livre(0,titre,a.Identifier(ida));
             cnx.Open();
             string requete = "INSERT INTO [OEUVRE] ([IDA],[TITRE],[TYPE],[DELAI_RETOUR]) VALUES (@Ida,@Titre,'Livre', @Delai)";
@@ -62,7 +63,6 @@ namespace Gestion_Biblio
         }
         public void Ajouterexemplaire(int ido, string etat) //Ajouter exemplaire
         {
-            Oeuvre o = new Oeuvre();
             o = o.Identifier(ido);
             Exemplaire e = new Exemplaire(0, etat,o);
             cnx.Open();

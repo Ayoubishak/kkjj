@@ -11,14 +11,17 @@ namespace Gestion_Biblio
     class Gestion_reservation_et_emprunt
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
+        Usager u = new Usager();
+        Exemplaire ex = new Exemplaire();
+        Oeuvre o = new Oeuvre();
+
         public void Emprunter(int idu, int ide) //Ajout d'un nouvelle emprunt
         {
-            //Ajout d'un emprunt d'éxemplaire par un usager
-            Usager u = new Usager();
+            //Identification des éléments
             u = u.Identifier(idu);
-            Exemplaire ex = new Exemplaire();
             ex = ex.Identifier(ide);
             Emprunt e = new Emprunt(DateTime.UtcNow.Date, default(DateTime), u, ex);
+            //Ajout d'un emprunt d'éxemplaire par un usager
             cnx.Open();
             string requete = "INSERT INTO [EMPRUNT] ([IDU],[IDE]) VALUES (@Idu,@Ide)";
             SqlCommand cmd = new SqlCommand(requete, cnx);
@@ -66,12 +69,16 @@ namespace Gestion_Biblio
 
         public void Rendre(int idu, int ide, string etat) //Ajout de Date de retour pour un emprunt spécifique
         {
+            //Identification des éléments
+            u = u.Identifier(idu);
+            ex = ex.Identifier(ide);
+            ex.Disponible = true;
             //Ajouter la date de retour a l'emprunt
             cnx.Open();
             string requete = "UPDATE [EMPRUNT] SET [DATERETOUR] = GETDATE() WHERE [IDU]=@Idu AND [IDE]=@Ide AND [DATERETOUR] IS NULL";
             SqlCommand cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Idu", idu);
-            cmd.Parameters.AddWithValue("@Ide", ide);
+            cmd.Parameters.AddWithValue("@Idu", u.Id);
+            cmd.Parameters.AddWithValue("@Ide", ex.Id);
             cmd.ExecuteNonQuery();
             cnx.Close();
 
@@ -79,7 +86,7 @@ namespace Gestion_Biblio
             cnx.Open();
             requete = "UPDATE [EXEMPLAIRE] SET [DISPONIBLE] = 1, [ETAT] =@Etat WHERE [IDE] =@Ide";
             cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Ide", ide);
+            cmd.Parameters.AddWithValue("@Ide", ex.Id);
             cmd.Parameters.AddWithValue("@Etat", etat);
             cmd.ExecuteNonQuery();
             cnx.Close();
@@ -88,13 +95,17 @@ namespace Gestion_Biblio
 
         public void Reserver(int idu, int ido) //Ajout d'une nouvelle réservation
         {
+            //Identification des éléments
+            u = u.Identifier(idu);
+            o = o.Identifier(ido);
+            Reservation r = new Reservation(DateTime.UtcNow.Date, default(DateTime), u, o);
             //Verifier si l'usager a une réservation similaire encours
             int t = 0;
             cnx.Open();
             string requete = "SELECT COUNT(*) FROM [RESERVATION] WHERE [IDU]=@Idu AND [IDO]=@Ido AND [DATEANNULATION] IS NULL";
             SqlCommand cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Idu", idu);
-            cmd.Parameters.AddWithValue("@Ido", ido);
+            cmd.Parameters.AddWithValue("@Idu", r.Usager.Id);
+            cmd.Parameters.AddWithValue("@Ido", r.Oeuvre.Id);
             SqlDataReader Dr = cmd.ExecuteReader();
             while (Dr.Read())
             {
@@ -106,11 +117,6 @@ namespace Gestion_Biblio
             //Si Non, Ajouter Réservation
             if (t == 0)
             {
-                Usager u = new Usager();
-                u = u.Identifier(idu);
-                Oeuvre o = new Oeuvre();
-                o = o.Identifier(ido);
-                Reservation r = new Reservation(DateTime.UtcNow.Date, default(DateTime), u, o);
                 cnx.Open();
                 requete = "INSERT INTO [RESERVATION] ([IDU],[IDO]) VALUES (@Idu,@Ido)";
                 cmd = new SqlCommand(requete, cnx);

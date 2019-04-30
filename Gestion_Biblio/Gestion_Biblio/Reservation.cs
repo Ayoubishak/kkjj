@@ -11,13 +11,13 @@ namespace Gestion_Biblio
     {
         SqlConnection cnx = new SqlConnection(Properties.Settings.Default.Biblio);
         private DateTime datejour;
-        private DateTime? dateretour; //variable de type date qui accepte une valeur NULL 
+        private DateTime? dateannulation; //variable de type date qui accepte une valeur NULL 
         private Usager usager;
         private Oeuvre oeuvre;
 
         //Getter Setter
         public DateTime Datejour { get => datejour; set => datejour = value; }
-        public DateTime? Dateretour { get => dateretour; set => dateretour = value; }
+        public DateTime? Dateannulation { get => dateannulation; set => dateannulation = value; }
         internal Usager Usager { get => usager; set => usager = value; }
         internal Oeuvre Oeuvre { get => oeuvre; set => oeuvre = value; }
 
@@ -25,10 +25,10 @@ namespace Gestion_Biblio
         {
         }
 
-        public Reservation(DateTime datejour, DateTime? dateretour, Usager usager, Oeuvre oeuvre)
+        public Reservation(DateTime datejour, DateTime? dateannulation, Usager usager, Oeuvre oeuvre)
         {
             this.datejour = datejour;
-            this.dateretour = dateretour;
+            this.dateannulation = dateannulation;
             this.usager = usager;
             this.oeuvre = oeuvre;
         }
