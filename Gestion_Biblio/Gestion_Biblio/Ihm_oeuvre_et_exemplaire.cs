@@ -240,7 +240,7 @@ namespace Gestion_Biblio
         {
             if (button9.Enabled == false)
             {
-                panel5.Visible = true;
+                panel5.Visible = false;
                 panel8.Visible = true;
             }           
             panel6.Visible = true;
