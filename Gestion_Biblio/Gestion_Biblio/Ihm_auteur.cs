@@ -107,20 +107,23 @@ namespace Gestion_Biblio
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //Identifier l'auteur
         {
-            string[] np = comboBox1.Text.Split(' ');
-            textBox1.Text = np[0];
-            textBox2.Text = np[1];
-            cnx.Open();
-            string requete = "SELECT [IDA] FROM [AUTEUR] where ([NOMA]+' '+[PRENOMA]) = @Auteur";
-            SqlCommand cmd = new SqlCommand(requete, cnx);
-            cmd.Parameters.AddWithValue("@Auteur", comboBox1.Text);
-            SqlDataReader Dr = cmd.ExecuteReader();
-            while (Dr.Read())
+            if (comboBox1.Text != "")
             {
-                label4.Text = Dr[0].ToString();
+                string[] np = comboBox1.Text.Split(' ');
+                textBox1.Text = np[0];
+                textBox2.Text = np[1];
+                cnx.Open();
+                string requete = "SELECT [IDA] FROM [AUTEUR] where ([NOMA]+' '+[PRENOMA]) = @Auteur";
+                SqlCommand cmd = new SqlCommand(requete, cnx);
+                cmd.Parameters.AddWithValue("@Auteur", comboBox1.Text);
+                SqlDataReader Dr = cmd.ExecuteReader();
+                while (Dr.Read())
+                {
+                    label4.Text = Dr[0].ToString();
+                }
+                Dr.Close();
+                cnx.Close();
             }
-            Dr.Close();
-            cnx.Close();
         }
 
         private void Ihm_auteur_Load(object sender, EventArgs e)
