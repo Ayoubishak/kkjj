@@ -89,6 +89,9 @@ namespace Gestion_Biblio
 
         private void button3_Click(object sender, EventArgs e) //Modifier formulaire pour l'ajout de l'auteur
         {
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
             button3.Enabled = false;
             button4.Enabled = true;
             label3.Visible = false;
@@ -98,6 +101,9 @@ namespace Gestion_Biblio
 
         private void button4_Click(object sender, EventArgs e) //Modifier formulaire pour la modification de l'auteur
         {
+            errorProvider1.Clear();
+            errorProvider2.Clear();
+            errorProvider3.Clear();
             button3.Enabled = true;
             button4.Enabled = false;
             label3.Visible = true;

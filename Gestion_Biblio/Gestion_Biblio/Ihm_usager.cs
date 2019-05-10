@@ -33,27 +33,27 @@ namespace Gestion_Biblio
             errorProvider4.Clear();
             errorProvider5.Clear();
             errorProvider6.Clear();
-            if (textBox1.Text == string.Empty)
+            if (textBox1.Text == string.Empty && button1.Text != "Retirer")
             {
                 errorProvider1.SetError(textBox1, "il faut remplir ce champ");
                 b = true;
             }
-            if (textBox2.Text == string.Empty)
+            if (textBox2.Text == string.Empty && button1.Text != "Retirer")
             {
                 errorProvider2.SetError(textBox2, "il faut remplir ce champ");
                 b = true;
             }
-            if (textBox3.Text == string.Empty)
+            if (textBox3.Text == string.Empty && button1.Text != "Retirer")
             {
                 errorProvider3.SetError(textBox3, "il faut remplir ce champ");
                 b = true;
             }
-            if (textBox4.Text == string.Empty)
+            if (textBox4.Text == string.Empty && button1.Text != "Retirer")
             {
                 errorProvider4.SetError(textBox4, "il faut remplir ce champ");
                 b = true;
             }
-            if (richTextBox1.Text == string.Empty)
+            if (richTextBox1.Text == string.Empty && button1.Text != "Retirer")
             {
                 errorProvider5.SetError(richTextBox1, "il faut remplir ce champ");
                 b = true;
